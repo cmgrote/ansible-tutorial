@@ -190,7 +190,7 @@ And encrypt this separate file using Ansible vault:
 $ ansible-vault encrypt group_vars/vault.yml
 ```
 
-Ensure that your playbook includes this vault as well, by simply adding a `vars_file` line:
+Ensure that your playbook includes this vault as well, by simply adding a `vars_files` line:
 
 ```yml
 ---
@@ -199,7 +199,7 @@ Ensure that your playbook includes this vault as well, by simply adding a `vars_
     - database
   roles:
     - bernardovale.db2
-  vars_file:
+  vars_files:
     - vault.yml
 ```
 
