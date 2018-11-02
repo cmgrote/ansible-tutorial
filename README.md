@@ -156,6 +156,7 @@ nginx_install_from: nginx_repository
 If you want to override a particular variable for a single host, often this is most easily done through a `host_vars` sub-directory (relative to your playbook), in which you place a file for each server for which you want to override variables. (The filename should be `<hostname>.yml`.)
 
 ```yml
+---
 nginx_unit_enable: true
 ```
 
