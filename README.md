@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 This site is meant to provide a tutorial that is an as-simple-as-possible introduction to Ansible, for those unfamiliar with it or new to it.
 
@@ -14,9 +14,9 @@ Why Ansible?
 
 And perhaps most importantly, the "code" (3) is [YAML](http://yaml.org) -- which is simple, structured text documentation _that's also executable_.
 
-## Basic concepts
+# Basic concepts
 
-### Inventory
+## Inventory
 
 An Ansible [**inventory**](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html) is a simple text file in which details about the various servers to which you will deploy are defined.
 
@@ -62,7 +62,7 @@ app.somewhere.com ansible_user='administrator' ansible_password='MyPassw0rd' ans
 
 The [Ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html#list-of-behavioral-inventory-parameters) provides a full set of variables that can be used to configure connectivity options.
 
-### Roles
+## Roles
 
 Before we get to playbooks, it is worth understanding one of the basic modularisation mechanisms that Ansible supports: the [**role**](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html).
 
@@ -78,7 +78,7 @@ Ansible provides a package-manager-of-sorts for roles called Galaxy, so a role c
 $ ansible-galaxy install nginxinc.nginx
 ```
 
-### Playbook
+## Playbook
 
 An Ansible [**playbook**](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) contains the instructions for deploying something.
 
@@ -115,7 +115,7 @@ $ ansible-playbook -i inventory_filename playbook.yml
 
 As the playbook runs, it will print out information about what task it is carrying out, against which server. Green "ok" indicates that the task has completed without making any change, yellow "changed" indicates that the task has completed and made some change to the system, and red "failed" indicates that there was an error. (By default, any host that has a "failed" task will no longer have any tasks run against it for the remainder of the playbook.)
 
-### Variables
+## Variables
 
 As mentioned above, [**variables**](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html) are generally used by both roles and playbooks to provide parameterisation to the uniqueness of your particular environment.
 
@@ -127,7 +127,7 @@ There are many ways to [pass variables through to Ansible](https://docs.ansible.
 
 However, for simplicity, often the easiest way to make use of variables in a consistent way is through one (or both) of the following two methods. These will then be automatically picked up each time when running the playbook.
 
-#### `group_vars`
+### group_vars
 
 Creating a sub-directory (relative to your playbook) called `group_vars`, in which you place a single file called `all.yml`. This single file can then contain all of the variables you want to configure, across all of the groups involved in your playbook.
 
@@ -142,7 +142,7 @@ nginx_type: opensource
 nginx_install_from: nginx_repository
 ```
 
-#### `host_vars`
+### host_vars
 
 If you want to override a particular variable for a single host, often this is most easily done through a `host_vars` sub-directory (relative to your playbook), in which you place a file for each server for which you want to override variables. (The filename should be `<hostname>.yml`.)
 
@@ -150,7 +150,7 @@ If you want to override a particular variable for a single host, often this is m
 nginx_unit_enable: true
 ```
 
-## Securing sensitive information
+# Securing sensitive information
 
 A common concern when deploying technology is ensuring that sensitive information (like user credentials) are appropriately protected.
 
