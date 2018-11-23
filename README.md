@@ -208,3 +208,9 @@ And then when you run your playbook, simply ensure it asks for the vault passwor
 ```shell
 $ ansible-playbook -i inventory_filename playbook.yml --ask-vault-pass
 ```
+
+# Other Tips and Tricks
+
+I would generally suggest always running playbooks (eg. on your control machine) through [GNU `screen`](https://www.gnu.org/software/screen/).
+
+This will ensure that even if you are disconnected for some reason from your control machine (ie. network problems), your playbook will nonetheless continue to run. Furthermore, you'll even be able to recover the output of it running by simply re-attaching to the virtual TTY of `screen` itself.
